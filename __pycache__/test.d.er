@@ -1,0 +1,19 @@
+##[pylyzer] failed /users/ookitomoya/documents/python_playground/test.py 1726380246 960
+.___v_desugar_1 = pyimport "typing"
+.typing = pyimport "typing"
+.GenericList: Never
+.Card: ClassType
+.Card.value: Int
+.Card.mark: Str
+.Card.__call__: (mark: Str, value: Int) -> test.Card
+.Card.__str__: (self: test.Card) -> Never
+.Card.__repr__: (self: test.Card) -> Never
+
+.bubble_sort: (C: Obj) -> Never
+.selection_sort: (C: Obj) -> Never
+.N: Never
+.cards_input: List(Str, _: Nat)
+.card_list: List!(test.Card, 0)
+
+.result: Never
+
