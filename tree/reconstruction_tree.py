@@ -5,6 +5,13 @@ class Node:
         self.left = left
         self.right = right
 
+    @property
+    def children_len(self):
+        cnt = 0
+        cnt += 1 if self.left else 0
+        cnt += 1 if self.right else 0
+        return cnt
+
 
 def insert(root: Node, node: Node):
     p = None
@@ -23,6 +30,50 @@ def insert(root: Node, node: Node):
         p.left = node
     else:
         p.right = node
+
+
+def get_successor(x: Node):
+    if x.right:
+        return get_min(x)
+
+    p = x.parent
+    while p and x.id != p.left:
+        x = p
+        p = p.parent
+    return p
+
+
+def get_min(x: Node):
+    while x.left:
+        x = x.left
+    return x
+
+
+def delete(z: Node):
+    y = None
+    if z.left is None or z.right is None:
+        y = z
+    else:
+        y = get_successor(z)
+
+    if not y:
+        # never happen
+        return
+    child = y.left if y.left else y.right
+
+    if child:
+        child.parent = y.parent
+
+    if not y.parent:
+        # y is root
+        return
+    elif y.id < y.parent.id:
+        y.parent.left = child
+    else:
+        y.parent.right = child
+
+    if y != z:
+        z.id = y.id
 
 
 def preorder(n: Node, A):
